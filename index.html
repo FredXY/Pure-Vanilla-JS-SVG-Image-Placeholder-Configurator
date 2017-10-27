@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pure Vanilla JS SVG Image Placeholder</title>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,400,300,500,700,300italic&subset=latin,latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,latin-ext");
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,a,address,em,img,small,strong,sub,sup,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,article,aside,footer,header,menu,nav,section{margin:0;padding:0;border:0;font:inherit;font-size:100%;vertical-align:baseline;}
+html{line-height:1;}
+ol,ul{list-style:none;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th,td{text-align:left;font-weight:normal;vertical-align:middle;}
+a img{border:none;}
+html{background:#fff;color:#000;font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+html,button,input,select,textarea{font-family:roboto,sans-serif;}
+body{margin:0;}
+form{margin:0}
+legend{border:0;padding:0;white-space:normal;*margin-left:-7px}
+button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;*overflow:visible}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*height:13px;*width:13px;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+*{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}
+body{color:#000;font-family:roboto,sans-serif;font-size:1em;line-height:1;-webkit-backface-visibility:hidden;min-height:100%}
+a{color:inherit;text-decoration:underline}
+a,a:focus,a:hover,a:active{outline:0;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+p{font-size:1em}
+hr{background-color:#dcdcdc;height:1px;color:#dcdcdc;border:0}
+header,label,small,h4{padding-left:0.625em;}
+header{padding-bottom:0.625em;}
+h1{font-size:1.875em;font-family:roboto,sans-serif;line-height:1.3em;letter-spacing:-1px;padding-bottom:0.2em;color:#444;}
+h2{font-size:1.5em;font-family:roboto,sans-serif;line-height:1.3em;position:relative;padding-bottom:0.2em;color:#555;}
+form,.form{max-width:450px;margin:0 auto}
+fieldset{padding:0.625em}
+input[type]:not([type=checkbox]){width:100%;height:52px;font-size:0.9375em;line-height:1.2em;font-family:"open_sansregular",Arial,Helvetica,sans-serif;padding:1em;color:#000000;border:1px solid #878F96;background-color:#fff;-webkit-box-shadow:0 0 0 3px rgba(0,0,0,0.09);-moz-box-shadow:0 0 0 3px rgba(0,0,0,0.09);box-shadow:0 0 0 3px rgba(0,0,0,0.09);-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;-o-border-radius:2px;border-radius:2px}
+::-webkit-input-placeholder{color:#000;}
+:-moz-placeholder{color:#000;}
+::-moz-placeholder{color:#000;}
+:-ms-input-placeholder{color:#000;}
+input.error{border:1px solid #f00!important}
+label,.label{margin-bottom:5px;display:inline-block;letter-spacing:-1px;line-height:1.4em;margin-right:1em;cursor:pointer}
+label:last-child,.label:last-child{margin-right:0}
+.form-field-wrap{width:100%;float:left;margin-bottom:1.5em}
+.form-field{width:100%}
+.form-field.half{width:40%;float:left}
+.form-field:last-child{margin-bottom:0}
+.form-field.last{margin-right:0;float:right}
+form .button{background:#eaeaea;height:52px;font-size:1.125em;margin-top:1em}
+img{max-width:100%;width:auto\9;height:auto;vertical-align:middle;border:0;-ms-interpolation-mode:bicubic}
+form .button,.button{display:inline-block;vertical-align:middle;white-space:no-wrap;cursor:pointer;border:0;text-decoration:none;padding:0px 20px 0px 20px;line-height:52px}
+.button{color:#444;font-size:0.9375em;font-weight:normal;background:#fff;min-height:44px;margin-top:2em;-webkit-transition:background 0.4s ease;-moz-transition:background 0.4s ease;-o-transition:background 0.4s ease;transition:background 0.4s ease;box-shadow: inset 0 0 0 1px #ccc, 0 5px 15px #ddd;}
+.button:hover,.more:hover{background:#444;color:#fff;box-shadow: inset 0 0 0 1px #ccc, inset 0 5px 15px #ddd;}
+.contact-form{padding:4em 0 1em 0}
+.contact-form label:first-child,.order-form label:first-child{float:left;width:100%;margin-bottom:1.2em}
+@media only screen and (min-width: 701px){.contact-form label:first-child{float:left;width:auto;margin-bottom:0}}
+label[for="ano"],label[for="yes"]{margin-right:15px;}.hl{border:1px solid red !important }
+.container{max-width:740px;padding:0 1em 0 1em;margin:2em auto;background:rgba(255,255,255,0.8);z-index:100;position:relative;}
+@media only screen and (min-width:701px){.container{width:90%;padding:0;}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="contact-form">
+<div class="form">
+<header>
+<h1>Pure Vanilla JS SVG Image Placeholder Configurator</h1>
+</header>
+<fieldset>
+<div class="form-field-wrap">
+<div class="form-field">
+<label for="w">Width (integer)</label>
+<input placeholder="300" type="number" name="w" id="w" value="" min="0" max="450" maxlength="3" step="1">
+</div>
+</div>
+<div class="form-field-wrap">
+<div class="form-field">
+<label for="h">Height (integer)</label>
+<input placeholder="200" type="text" name="h" id="h" value="" min="0" max="450" maxlength="3" step="1">
+</div>
+</div>
+<div class="form-field-wrap">
+<div class="form-field">
+<label for="fs">Font Size (integer)</label>
+<input placeholder="20" type="number" name="fs" id="fs" value="" min="10" max="99" step="1">
+</div>
+</div>
+<div class="form-field-wrap">
+<div class="form-field">
+<label for="w">Background Color</label>
+<input placeholder="#ccc" type="text" name="bg" id="bg" value="">
+</div>
+</div>
+<div class="form-field-wrap">
+<div class="form-field">
+<label for="w">Text Font Color</label>
+<input placeholder="#aaa" type="text" name="cl" id="cl" value="">
+</div>
+</div>
+<div class="form-field-wrap">
+<div class="form-field">
+<label for="w">Text Value</label>
+<input placeholder="300x200" type="text" name="txt" id="txt" value="">
+</div>
+</div>
+<hr>
+</fieldset>
+</div>
+<div class="form">
+<hr>
+<h2>Result</h2>
+<div class="form-field-wrap">
+<div class="form-field">
+<label for="result">Result image URL</label>
+<input type="text" id="result" value="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200' preserveAspectRatio='none'><rect width='100%' height='100%' fill='#ccc'/><text text-anchor='middle' x='150' y='100' style='fill:#aaa;font-weight:bold;font-size:20px;font-family:Arial,Helvetica,sans-serif;dominant-baseline:central'>300x200</text></svg>" readonly="readonly">
+</div>
+</div>
+<div class="form-field-wrap">
+<div class="form-field">
+<label for="code">Result image Code for HTML</label>
+<input type="text" id="code" value="&lt;img src=&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200' preserveAspectRatio='none'><rect width='100%' height='100%' fill='#ccc'/><text text-anchor='middle' x='150' y='100' style='fill:#aaa;font-weight:bold;font-size:20px;font-family:Arial,Helvetica,sans-serif;dominant-baseline:central'>300x200</text></svg>&quot; alt=&quot;300x200&quot; width=&quot;300&quot; height=&quot;200&quot;&gt;" readonly="readonly">
+</div>
+</div>
+<div class="form-field-wrap">
+<div class="form-field">
+<label for="code">Result image SVG Code</label>
+<input type="text" id="svgcode" value="&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;200&quot; viewBox=&quot;0 0 300 200&quot; preserveAspectRatio=&quot;none&quot;&gt;&lt;rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#eee&quot;/&gt;&lt;text text-anchor=&quot;middle&quot; x=&quot;150&quot; y=&quot;100&quot; style=&quot;fill:#aaa;font-weight:bold;font-size:20px;font-family:Arial,Helvetica,sans-serif;dominant-baseline:central&quot;&gt;300x200&lt;/text&gt;&lt;/svg&gt;" readonly="readonly">
+</div>
+</div>
+<h4>Image Preview</h4>
+<br>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSczMDAnIGhlaWdodD0nMjAwJyB2aWV3Qm94PScwIDAgMzAwIDIwMCcgcHJlc2VydmVBc3BlY3RSYXRpbz0nbm9uZSc+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsbD0nI2NjYycvPjx0ZXh0IHRleHQtYW5jaG9yPSdtaWRkbGUnIHg9JzE1MCcgeT0nMTAwJyBzdHlsZT0nZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjIwcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCc+MzAweDIwMDwvdGV4dD48L3N2Zz4=" id="preview" width="300" height="200">
+<br>
+<br>
+<h4>Download Image</h4>
+<br>
+<h4><a href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200' preserveAspectRatio='none'><rect width='100%' height='100%' fill='#ccc'/><text text-anchor='middle' x='150' y='100' style='fill:#aaa;font-weight:bold;font-size:20px;font-family:Arial,Helvetica,sans-serif;dominant-baseline:central'>300x200</text></svg>" id="download" download>Download result</a></h4>
+</div>
+</div>
+</div>
+<script>
+var w,h,fs,bg,cl,txt,wval,hval,fsval,bgval,clval,txtval,all,inp,successful,dval,arh,arw,maxW=450,maxH=450,r=0,typetxt,iefix;
+document.getElementById('w').focus();
+function download(strData,strFileName,strMimeType){if(navigator.msSaveBlob){return navigator.msSaveBlob(new Blob([strData],{type:strMimeType}),strFileName);}}
+all=document.getElementsByTagName('input');
+for(i=0;i<all.length;i++){
+inp=all[i],my=inp.getAttribute('readonly');
+if(my=='readonly'){
+inp.onclick=function(){
+this.focus();this.select();this.setSelectionRange(0,9999);
+try{
+successful=document.execCommand('copy'),msg=successful?'successful':'unsuccessful';
+console.log('Copying text command was '+msg);}catch (err){console.log('Oops, unable to copy');}
+};
+inp.onmouseup=function(){return false;};
+}
+else{
+inp.onkeyup=function(){
+wval=document.getElementById('w').value;if(wval==''){wval='300';}
+hval=document.getElementById('h').value;if(hval==''){hval='200';}
+fsval=document.getElementById('fs').value;if(fsval==''){fsval='20';}
+clval=document.getElementById('cl').value;if(clval==''){clval='#aaa';}
+bgval=document.getElementById('bg').value;if(bgval==''){bgval='#ccc';}
+txtval=document.getElementById('txt').value;if(txtval==''){txtval='300x200';}
+document.getElementById('svgcode').value='<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"'+wval+'\" height=\"'+hval+'\" viewBox=\"0 0 '+wval+' '+hval+'\" preserveAspectRatio=\"none\"><rect width=\"100%\" height=\"100%\" fill=\"'+bgval+'\" /><text text-anchor=\"middle\" x=\"'+wval/2+'\" y=\"'+hval/2+'\" style=\"fill:'+clval+';font-weight:bold;font-size:'+fsval+'px;font-family:Arial,Helvetica,sans-serif;dominant-baseline:central\">'+txtval+'</text></svg>';
+iefix=document.getElementById('svgcode').value;
+encoded=window.btoa(unescape(encodeURIComponent(iefix)));
+document.getElementById('preview').src='data:image/svg+xml;base64,'+encoded;
+document.getElementById('result').value=document.getElementById('preview').src;
+document.getElementById('download').href=document.getElementById('preview').src;
+document.getElementById('code').value='<img src="data:image/svg+xml;base64,'+encoded+'" alt="'+txtval+'" width="'+wval+'" height="'+hval+'">';
+if(navigator.msSaveBlob){
+document.getElementById('download').onclick=function(){
+download(atob(encoded),"download.svg","image/svg+xml");
+return false;
+};
+}
+}
+}
+}
+</script>
+</body>
+</html>
