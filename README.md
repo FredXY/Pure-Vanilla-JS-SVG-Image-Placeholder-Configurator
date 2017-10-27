@@ -1,0 +1,1 @@
+# Pure-Vanilla-JS-SVG-Image-Placeholder-Configurator
